@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FD06C20D2D922DC200E2AF5E /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = FD06C20C2D922DC200E2AF5E /* Shimmer */; };
+		FD1DD74F2D92F4E40021317A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FD1DD74E2D92F4E40021317A /* Kingfisher */; };
+		FD1DD8F32D92FF1F0021317A /* LoaderUI in Frameworks */ = {isa = PBXBuildFile; productRef = FD1DD8F22D92FF1F0021317A /* LoaderUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		FD5EE0052D9221260070DCA6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD1DD74F2D92F4E40021317A /* Kingfisher in Frameworks */,
+				FD1DD8F32D92FF1F0021317A /* LoaderUI in Frameworks */,
+				FD06C20D2D922DC200E2AF5E /* Shimmer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +121,9 @@
 			);
 			name = "pleny task";
 			packageProductDependencies = (
+				FD06C20C2D922DC200E2AF5E /* Shimmer */,
+				FD1DD74E2D92F4E40021317A /* Kingfisher */,
+				FD1DD8F22D92FF1F0021317A /* LoaderUI */,
 			);
 			productName = "pleny task";
 			productReference = FD5EDFEF2D9221230070DCA6 /* pleny task.app */;
@@ -195,6 +207,11 @@
 			);
 			mainGroup = FD5EDFE62D9221230070DCA6;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				FD06C20B2D922DC200E2AF5E /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+				FD1DD74D2D92F4E40021317A /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				FD1DD8F12D92FF1F0021317A /* XCRemoteSwiftPackageReference "LoaderUI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FD5EDFF02D9221230070DCA6 /* Products */;
 			projectDirPath = "";
@@ -399,11 +416,13 @@
 				DEVELOPMENT_TEAM = NG89QN2J82;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pleny Task";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -428,11 +447,13 @@
 				DEVELOPMENT_TEAM = NG89QN2J82;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pleny Task";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -558,6 +579,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FD06C20B2D922DC200E2AF5E /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.5.1;
+			};
+		};
+		FD1DD74D2D92F4E40021317A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = exactVersion;
+				version = 8.3.1;
+			};
+		};
+		FD1DD8F12D92FF1F0021317A /* XCRemoteSwiftPackageReference "LoaderUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/LoaderUI";
+			requirement = {
+				kind = exactVersion;
+				version = 0.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FD06C20C2D922DC200E2AF5E /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD06C20B2D922DC200E2AF5E /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
+		};
+		FD1DD74E2D92F4E40021317A /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD1DD74D2D92F4E40021317A /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		FD1DD8F22D92FF1F0021317A /* LoaderUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD1DD8F12D92FF1F0021317A /* XCRemoteSwiftPackageReference "LoaderUI" */;
+			productName = LoaderUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FD5EDFE72D9221230070DCA6 /* Project object */;
 }
