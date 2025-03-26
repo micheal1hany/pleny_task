@@ -11,7 +11,7 @@ import SwiftUI
 
 struct GalleryScreen: View {
     
-    @ObservedObject private var vm = GalleryViewModel()
+    @StateObject private var vm = GalleryViewModel()
     
     var body: some View {
         Text("GalleryScreen")

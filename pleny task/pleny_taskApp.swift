@@ -14,6 +14,9 @@ struct pleny_taskApp: App {
     var body: some Scene {
         WindowGroup {
             CoordinatorView()
+                .environment(\.locale, .init(identifier: "en_US"))
+                .environment(\.layoutDirection, Language.isRTL ? .rightToLeft:.leftToRight)
+                .colorScheme(.light)
         }
     }
 }

@@ -11,7 +11,7 @@ import SwiftUI
 
 struct LoginScreen: View {
     
-    @ObservedObject private var vm = LoginViewModel()
+    @StateObject private var vm = LoginViewModel()
     @EnvironmentObject var coordinator: Coordinator
     
     @State private var userName: String = ""

@@ -11,7 +11,7 @@ import SwiftUI
 
 struct HomeScreen: View {
     
-    @ObservedObject private var vm = HomeViewModel()
+    @StateObject private var vm = HomeViewModel()
     @EnvironmentObject var coordinator: Coordinator
     
     @State private var showSearchBar: Bool = false
@@ -21,19 +21,30 @@ struct HomeScreen: View {
         GeometryReader { geo in
             VStack(alignment: .center, spacing: 16) {
                 HomeToolBar(searchText: $searchText)
+                    .frame(alignment: .top)
                 
-                ScrollView(.vertical, showsIndicators: false) {
-                    VStack(alignment: .center, spacing: 0) {
-                        Text("Home screen")
-                        
-                        Button("Go to Gallery") {
-                            coordinator.push(.gallery)
+                
+                switch vm.state {
+                case .loading:
+                    HomeLoadingShimmer()
+                case .success:
+                    PostListView(posts: vm.posts)
+                        .refreshable {
+                            Task{
+                                await vm.getPosts(skip: 0)
+                            }
                         }
-                    }
+                    
+                default:
+                    EmptyView()
                 }
             }
-            
-            
+        }
+        
+        .onAppear {
+            Task{
+                await vm.getPosts(skip: 0)
+            }
         }
         
     }
