@@ -7,17 +7,30 @@
 
 import SwiftUI
 
-struct CustomTF: View {
+struct CustomTF<LeadingView:View,TrailingView:View>: View {
+    
     var header: String? = nil
     var placeholder: String
     var validationType: TextFieldValidator.FieldType? = nil
     var isSecure: Bool = false
-    var prefixIcon: Image? = nil
-    var suffixIcon: Image? = nil
 
-    @Binding var error: String?
-    @Binding var text: String
+    var error: Binding<String?>?
+    var text: Binding<String>
     @State private var isPasswordVisible: Bool = false
+    
+    var leadingView :LeadingView?
+    var trailingView :TrailingView?
+    
+    init(header: String? = nil, placeholder: String, validationType: TextFieldValidator.FieldType? = nil, isSecure: Bool = false, error: Binding<String?>? = nil, text: Binding<String>, @ViewBuilder leadingView: () -> LeadingView? = {EmptyView?.none},  @ViewBuilder trailingView: () -> TrailingView? = {EmptyView?.none}) {
+        self.header = header
+        self.placeholder = placeholder
+        self.validationType = validationType
+        self.isSecure = isSecure
+        self.error = error
+        self.text = text
+        self.leadingView = leadingView()
+        self.trailingView = trailingView()
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -27,37 +40,35 @@ struct CustomTF: View {
             }
             
             HStack {
-                // Prefix Icon
-                if let prefixIcon = prefixIcon {
-                    prefixIcon
-                        .foregroundColor(.gray)
-                        .padding(.leading, 10)
-                }
+                // leading view
+                leadingView
+                    .foregroundColor(.gray)
+                    .padding(.leading, 10)
                 
                 ZStack(alignment: .trailing) {
                     if isSecure && !isPasswordVisible {
-                        SecureField(placeholder, text: $text)
+                        SecureField(placeholder, text: self.text)
                             .textFieldStyle(.roundedBorder)
                             .frame(height: 42)
-                            .onChange(of: text) { value in
+                            .onChange(of: self.text.wrappedValue) { value in
                                 validate(value)
                             }
                     } else {
-                        TextField(placeholder, text: $text)
+                        TextField(placeholder, text: self.text)
                             .textFieldStyle(.roundedBorder)
                             .frame(height: 42)
-                            .onChange(of: text) { value in
+                            .onChange(of: text.wrappedValue) { value in
                                 validate(value)
                             }
                     }
                     
-                    // Suffix Icons (Eye for secure fields & custom suffix)
+                    // trailing view (Eye for secure fields & custom suffix)
                     HStack {
-                        if let suffixIcon = suffixIcon {
-                            suffixIcon
-                                .foregroundColor(.gray)
-                        }
-                        if isSecure {
+                        
+                        trailingView
+                            .foregroundColor(.gray)
+                        
+                        if isSecure{
                             Button(action: {
                                 isPasswordVisible.toggle()
                             }) {
@@ -72,9 +83,9 @@ struct CustomTF: View {
             .background(RoundedRectangle(cornerRadius: 8).stroke(Color.gray.opacity(0.5)))
             
             if let error = error {
-                Text(error)
+                Text(self.error?.wrappedValue ?? "")
                     .textStyle(size: 14, color: .red, weight: .regular, alignment: .leading, textAlignment: .leading)
-                    .animation(.easeIn, value: error)
+                    .animation(.easeIn, value: error.wrappedValue)
             }
         }
     }
@@ -82,13 +93,13 @@ struct CustomTF: View {
     private func validate(_ value: String) {
         switch validationType {
         case .requiredField:
-            self.error = TextFieldValidator.validateEmptyValue(value)
+            self.error?.wrappedValue = TextFieldValidator.validateEmptyValue(value)
         case .username:
-            self.error = TextFieldValidator.validateUserName(value)
+            self.error?.wrappedValue = TextFieldValidator.validateUserName(value)
         case .none:
             break
         default:
-            self.error = TextFieldValidator.validateEmptyValue(value)
+            self.error?.wrappedValue = TextFieldValidator.validateEmptyValue(value)
         }
     }
 }
