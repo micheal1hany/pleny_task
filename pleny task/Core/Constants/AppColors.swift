@@ -13,4 +13,5 @@ class AppColors{
     
     static let secondaryColor  = "344054"
     static let mainColor = "3F3FD1"
+    static let lightText = "475467"
 }

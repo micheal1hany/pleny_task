@@ -22,13 +22,26 @@ struct HomeToolBar:View {
                 
                 
                 Button {
-                    showSearch.toggle()
+                    withAnimation {
+                        showSearch.toggle()
+                    }
                 } label: {
                     Image(.searchIcon)
                         .imageSize(width: 24, height: 24)
                 }
             }else{
-                CustomTF(placeholder: "Search Posts", error: .constant(nil), text: $searchText)
+                CustomTF(placeholder: "Search Posts",text: $searchText, trailingView:  {
+                    Button {
+                        withAnimation {
+                            showSearch.toggle()
+                            searchText = ""
+                        }
+                    } label: {
+                        Image(.closeIcon)
+                            .imageSize(width: 24, height: 24)
+                    }
+                    
+                })
                     
             }
 

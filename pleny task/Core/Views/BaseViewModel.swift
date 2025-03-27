@@ -31,8 +31,28 @@ enum ViewState:Equatable {
     case success
 }
 
+enum PaginationState:Equatable {
+    static func == (lhs: PaginationState, rhs: PaginationState) -> Bool {
+        switch (lhs, rhs) {
+        case (.none, .none),
+            (.nextPage, .nextPage),
+            (.empty, .empty),
+            (.lastPage, .lastPage):
+            return true
+        default:
+            return false
+        }
+    }
+    
+    case none
+    case nextPage
+    case lastPage
+    case empty
+}
+
 class BaseViewModel:ObservableObject {
     
     @MainActor @Published var state:ViewState = .none
+    @MainActor @Published var paginationState:PaginationState = .none
     
 }

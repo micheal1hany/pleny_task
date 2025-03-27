@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CoordinatorView: View {
     
-    @StateObject var coordinator = Coordinator(rootView: .main) // change entry point
+    @StateObject var coordinator = Coordinator(rootView: .main)
     
     var body: some View {
         NavigationStack(path:$coordinator.navigationPath,root: {

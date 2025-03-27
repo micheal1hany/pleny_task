@@ -26,7 +26,7 @@ class Coordinator: ObservableObject {
     @Published var rootView: Destination
     @Published var navigationPath: [Destination] = []
     @Published var navType: NavigationType?
-    @Published var passedArguments: [Destination: [String: Any]] = [:]
+//    @Published var passedArguments: [Destination: [String: Any]] = [:]
     
     init(rootView:Destination){
         self.rootView = rootView
@@ -36,9 +36,9 @@ class Coordinator: ObservableObject {
         navType = type
         
         // Store arguments for the destination
-        if let args = arguments {
-            passedArguments[page] = args
-        }
+//        if let args = arguments {
+//            passedArguments[page] = args
+//        }
 
         switch navType {
         case .fullScreenCover:
@@ -58,9 +58,9 @@ class Coordinator: ObservableObject {
         
         isReplace = true
         
-        if let args = arguments {
-            passedArguments[page] = args
-        }
+//        if let args = arguments {
+//            passedArguments[page] = args
+//        }
         
         DispatchQueue.main.async {
             withAnimation {
@@ -98,9 +98,9 @@ class Coordinator: ObservableObject {
     
     func pop() {
         
-        if let lastPage = navigationPath.last {
-            passedArguments[lastPage] = nil // Clear arguments for the popped page
-        }
+//        if let lastPage = navigationPath.last {
+//            passedArguments[lastPage] = nil // Clear arguments for the popped page
+//        }
         
         if (fullScreenCover == nil) && (sheet == nil){
             navType = .link
@@ -128,7 +128,7 @@ class Coordinator: ObservableObject {
     
     func popToRoot() {
         navigationPath.removeAll()
-        passedArguments.removeAll()
+//        passedArguments.removeAll()
     }
     
     func selectTab(_ tab: AppTabs) {

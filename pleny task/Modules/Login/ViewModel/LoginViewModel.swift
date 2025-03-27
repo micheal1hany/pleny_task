@@ -49,30 +49,38 @@ class LoginViewModel: BaseViewModel {
     }
     
     // MARK: login
-    @MainActor func login(username:String,password:String) async {
+    func login(username:String,password:String) async {
         
-        state = .loading
+        await MainActor.run {
+            state = .loading
+        }
         
         do{
             if let data = try await repo.login(username: username, password: password) {
-                self.user = data
                 if let token = data.accessToken{
                     await API.shared.setToken(token: token)
                 }
-                self.state = .success
-            }else{
-                state = .empty
+                await MainActor.run {
+                    self.user = data
+                    
+                    self.state = .success
+                }
+                
             }
         }catch let error as APIError {
-            Log.e(error)
-            if error.error == .noInternetConnection {
-                self.state = .noInternet
-            }else{
-                self.state = .failed(error)
+            await MainActor.run {
+                Log.e(error)
+                if error.error == .noInternetConnection {
+                    self.state = .noInternet
+                }else{
+                    self.state = .failed(error)
+                }
             }
         }catch{
-            Log.e(error)
-            self.state = .failed(error)
+            await MainActor.run {
+                Log.e(error)
+                self.state = .failed(error)
+            }
         }
         
     }

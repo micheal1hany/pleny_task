@@ -11,16 +11,18 @@ import SwiftUI
 
 struct MainScreen: View {
     
-    @ObservedObject private var vm = MainViewModel()
+    @StateObject private var vm = MainViewModel()
     @EnvironmentObject var coordinator: Coordinator
     
     var body: some View {
         TabView(selection: $coordinator.selectedTab) {
             ForEach(AppTabs.allCases) { tab in
-                tab.details.screen
+                tab.details.tabScreen
                     .tabItem {
-                        Image(tab.details.imageResource)
-                        Text(tab.details.name)
+                        Label(LocalizedStringKey(tab.details.name), image: tab.details.imageResource)
+                            .onTapGesture {
+                                coordinator.selectTab(tab)
+                            }
                     }
                     .tag(tab.id)
             }

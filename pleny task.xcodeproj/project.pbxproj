@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FD06C20D2D922DC200E2AF5E /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = FD06C20C2D922DC200E2AF5E /* Shimmer */; };
-		FD1DD74F2D92F4E40021317A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = FD1DD74E2D92F4E40021317A /* Kingfisher */; };
 		FD1DD8F32D92FF1F0021317A /* LoaderUI in Frameworks */ = {isa = PBXBuildFile; productRef = FD1DD8F22D92FF1F0021317A /* LoaderUI */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +57,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD1DD74F2D92F4E40021317A /* Kingfisher in Frameworks */,
 				FD1DD8F32D92FF1F0021317A /* LoaderUI in Frameworks */,
 				FD06C20D2D922DC200E2AF5E /* Shimmer in Frameworks */,
 			);
@@ -122,7 +120,6 @@
 			name = "pleny task";
 			packageProductDependencies = (
 				FD06C20C2D922DC200E2AF5E /* Shimmer */,
-				FD1DD74E2D92F4E40021317A /* Kingfisher */,
 				FD1DD8F22D92FF1F0021317A /* LoaderUI */,
 			);
 			productName = "pleny task";
@@ -209,7 +206,6 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				FD06C20B2D922DC200E2AF5E /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
-				FD1DD74D2D92F4E40021317A /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				FD1DD8F12D92FF1F0021317A /* XCRemoteSwiftPackageReference "LoaderUI" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -589,14 +585,6 @@
 				version = 1.5.1;
 			};
 		};
-		FD1DD74D2D92F4E40021317A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = exactVersion;
-				version = 8.3.1;
-			};
-		};
 		FD1DD8F12D92FF1F0021317A /* XCRemoteSwiftPackageReference "LoaderUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ninjaprox/LoaderUI";
@@ -612,11 +600,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FD06C20B2D922DC200E2AF5E /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
 			productName = Shimmer;
-		};
-		FD1DD74E2D92F4E40021317A /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FD1DD74D2D92F4E40021317A /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
 		};
 		FD1DD8F22D92FF1F0021317A /* LoaderUI */ = {
 			isa = XCSwiftPackageProductDependency;

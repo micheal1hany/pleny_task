@@ -11,7 +11,7 @@ import SwiftUI
 
 struct DiscountsScreen: View {
     
-    @ObservedObject private var vm = DiscountsViewModel()
+    @StateObject private var vm = DiscountsViewModel()
     
     var body: some View {
         Text("DiscountsScreen")
