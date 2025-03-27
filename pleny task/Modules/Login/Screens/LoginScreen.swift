@@ -9,6 +9,12 @@
 
 import SwiftUI
 
+///
+/// please use this credentials to login
+///
+/// username: 'emilys'
+/// password: 'emilyspass'
+
 struct LoginScreen: View {
     
     @StateObject private var vm = LoginViewModel()
@@ -16,6 +22,8 @@ struct LoginScreen: View {
     
     @State private var userName: String = ""
     @State private var password: String = ""
+    
+    
     
     var body: some View {
         GeometryReader { geo in
