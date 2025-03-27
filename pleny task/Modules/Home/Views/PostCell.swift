@@ -48,6 +48,7 @@ struct PostCell: View {
                             Image(image)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
+                                .fra
                                 .cornerRadius(10, corners: .allCorners)
                                 .onTapGesture {
                                     withAnimation(.spring()) {

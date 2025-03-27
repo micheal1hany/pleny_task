@@ -12,21 +12,24 @@ import SwiftUI
 struct MainScreen: View {
     
     @StateObject private var vm = MainViewModel()
+    
+    @State private var selectedTab:AppTabs = .home
+    
     @EnvironmentObject var coordinator: Coordinator
     
     var body: some View {
-        TabView(selection: $coordinator.selectedTab) {
+        TabView(selection: $selectedTab) {
             ForEach(AppTabs.allCases) { tab in
-                tab.details.tabScreen
+                coordinator.build(page: tab.item.tabScreen)
                     .tabItem {
-                        Label(LocalizedStringKey(tab.details.name), image: tab.details.imageResource)
-                            .onTapGesture {
-                                coordinator.selectTab(tab)
-                            }
+                        Label(LocalizedStringKey(tab.item.name), image: tab.item.imageResource)
                     }
-                    .tag(tab.id)
+                    .tag(tab)
             }
         }
+        .onChange(of: selectedTab, perform: { tab in
+            coordinator.selectTab(tab)
+        })
         .accentColor(Color(hex: AppColors.mainColor))
     }
 }

@@ -34,18 +34,18 @@ enum AppTabs: String, CaseIterable,Identifiable {
         self.rawValue
     }
     
-    var details: (name: String, imageResource: String, tabScreen: AnyView) {
+    var item: (name: String, imageResource: String, tabScreen: Destination) {
         switch self {
         case .home:
-            return (name: id, imageResource: "home_icon", tabScreen: AnyView(LazyView(HomeScreen())))
+            return (name: id, imageResource: "home_icon", tabScreen: .home)
         case .shop:
-            return (name: id, imageResource: "shop_icon", tabScreen: AnyView(LazyView(ShopScreen())))
+            return (name: id, imageResource: "shop_icon", tabScreen: .shop)
         case .discounts:
-            return (name: id, imageResource: "discount_icon", tabScreen: AnyView(LazyView(DiscountsScreen())))
+            return (name: id, imageResource: "discount_icon", tabScreen: .discounts)
         case .gallery:
-            return (name: id, imageResource: "gallery_icon", tabScreen: AnyView(LazyView(GalleryScreen())))
+            return (name: id, imageResource: "gallery_icon", tabScreen: .gallery)
         case .profile:
-            return (name: id, imageResource: "profile_icon", tabScreen: AnyView(LazyView(ProfileScreen())))
+            return (name: id, imageResource: "profile_icon", tabScreen: .profile)
         }
     }
 }
