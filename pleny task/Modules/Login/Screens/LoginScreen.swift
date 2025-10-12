@@ -18,12 +18,11 @@ import SwiftUI
 struct LoginScreen: View {
     
     @StateObject private var vm = LoginViewModel()
+    
     @EnvironmentObject var coordinator: Coordinator
     
     @State private var userName: String = ""
     @State private var password: String = ""
-    
-    
     
     var body: some View {
         GeometryReader { geo in
@@ -37,6 +36,14 @@ struct LoginScreen: View {
                     VStack(alignment: .center, spacing: 24) {
                         Text("Welcome")
                             .textStyle(size: 20, color: AppColors.mainColor, weight: .bold, alignment: .center, textAlignment: .center)
+                        
+                        Button {
+                            coordinator.pop()
+                        } label: {
+                            Text("Pop Screen")
+                                .textStyle(size: 20, color: AppColors.mainColor, weight: .bold, alignment: .center, textAlignment: .center)
+                        }
+
                         
                         CustomTF(header: "User Name", placeholder: "Enter your user name", validationType: .username, error: $vm.userNameError, text: $userName)
                             .textInputAutocapitalization(.never)
@@ -72,7 +79,7 @@ struct LoginScreen: View {
         .onChange(of: vm.state) { value in
             switch value {
             case .success:
-                coordinator.replace(with: .main, replaceRoot: true)
+                coordinator.replaceRoot(with: .main,tab: .home)
             default:
                 Log.d("view state",value)
             }

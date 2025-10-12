@@ -12,12 +12,18 @@ import SwiftUI
 struct GalleryScreen: View {
     
     @StateObject private var vm = GalleryViewModel()
+    @EnvironmentObject var coordinator: Coordinator
     
     var body: some View {
-        Text("GalleryScreen")
+        VStack{
+            NavigationButton(fullScreen: .login) {
+                Text("Go to login fullscreen")
+            }
+            Text("GalleryScreen")
+        }
             .toolbar {
-                Button("ooook") {
-                    print("oooooook")
+                Button("Back") {
+                    coordinator.pop()
                 }
             }
     }

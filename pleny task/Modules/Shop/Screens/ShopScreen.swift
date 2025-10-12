@@ -12,9 +12,22 @@ import SwiftUI
 struct ShopScreen: View {
     
     @StateObject private var vm = ShopViewModel()
+    @EnvironmentObject var coordinator: Coordinator
     
     var body: some View {
-        Text("ShopScreen")
+        VStack{
+            NavigationButton(push: .gallery) {
+                Text("Go to gallery")
+            }
+            Text("Shop Screen")
+        }
+        
+//        Button {
+//            coordinator.navigate(to: .sheet(.gallery))
+//        } label: {
+//            Text("Go to gallery")
+//        }
+
     }
 }
 

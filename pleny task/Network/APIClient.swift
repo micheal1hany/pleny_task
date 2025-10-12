@@ -31,9 +31,9 @@ public actor API:GlobalActor{
         var httpResponse: HTTPURLResponse?
         var apiError: Error?
         
-        defer{
-            Log.logAPI(HTTPMethod: req?.httpMethod,baseURL: request.baseURL, endpoint: request.path.rawValue, statuesCode: httpResponse?.statusCode ?? 0, headers: req?.allHTTPHeaderFields?.description, params: req?.httpBody?.dictionary, requestTime: httpResponse?.requestDuration(from: startDate), res: res?.0.utf8String, error: apiError)
-        }
+//        defer{
+//            Log.logAPI(HTTPMethod: req?.httpMethod,baseURL: request.baseURL, endpoint: request.path.rawValue, statuesCode: httpResponse?.statusCode ?? 0, headers: req?.allHTTPHeaderFields?.description, params: req?.httpBody?.dictionary, requestTime: httpResponse?.requestDuration(from: startDate), res: res?.0.utf8String, error: apiError)
+//        }
         
         do{
             

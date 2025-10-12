@@ -48,15 +48,17 @@ struct CustomTF<LeadingView:View,TrailingView:View>: View {
                 ZStack(alignment: .trailing) {
                     if isSecure && !isPasswordVisible {
                         SecureField(placeholder, text: self.text)
-                            .textFieldStyle(.roundedBorder)
+//                            .textFieldStyle(.roundedBorder)
                             .frame(height: 42)
+                            .padding(.horizontal,8)
                             .onChange(of: self.text.wrappedValue) { value in
                                 validate(value)
                             }
                     } else {
                         TextField(placeholder, text: self.text)
-                            .textFieldStyle(.roundedBorder)
+//                            .textFieldStyle(.roundedBorder)
                             .frame(height: 42)
+                            .padding(.horizontal,8)
                             .onChange(of: text.wrappedValue) { value in
                                 validate(value)
                             }

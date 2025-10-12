@@ -14,7 +14,13 @@ struct DiscountsScreen: View {
     @StateObject private var vm = DiscountsViewModel()
     
     var body: some View {
-        Text("DiscountsScreen")
+        VStack {
+            NavigationButton(sheet: .home) {
+                Text("Go to Home sheet")
+            }
+            
+            Text("DiscountsScreen")
+        }
     }
 }
 

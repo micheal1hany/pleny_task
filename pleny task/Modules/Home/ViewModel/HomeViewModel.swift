@@ -28,9 +28,11 @@ class HomeViewModel: BaseViewModel {
     //MARK: - PAGINATION
     func loadNextPostsPage(currentItem item: PostUIModel,searchValue:String? = nil) async {
         if self.posts?.last?.id == item.id && !self.lastPage{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
+                guard let self = self else {return}
+                
                 self.skip += 10
-                Task{
+                Task {
                     await self.getPosts(skip: self.skip,paginating:true, searchValue: searchValue)
                 }
             }
